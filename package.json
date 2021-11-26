@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
 "scripts": {
-  "dev:only": "svelte-kit dev",
+  "dev:only": "svelte-kit dev --host 0.0.0.0",
   "build:only": "svelte-kit build",
   "preview": "svelte-kit preview",
   "tailwind:watch": "cross-env TAILWIND_MODE=watch cross-env NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/tailwind-output.css -w",

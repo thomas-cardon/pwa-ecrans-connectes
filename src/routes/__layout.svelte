@@ -1,5 +1,6 @@
 <script>
-  import '../styles/tailwind-output.css';
+  import { space } from 'svelte/internal';
+import '../styles/tailwind-output.css';
 </script>
 
 <main class="bg-kindblue flex flex-col min-h-screen">
@@ -35,12 +36,13 @@
         >
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
         </svg>
-        <p class="ml-3 text-xl">
-          Ecrans connectés<span class="ml-3 text-sm text-gray-300"
-            >Créé par l'équipe 2021: Thomas Cardon, Baraka Ahmed, Alexandre
-            Arniaud, Manaud Calixte, Bénigne Demetz, Mohamed Labidi.</span
-          >
-        </p>
+        <div class="ml-5 sm:ml-12 flex flex-col">
+          <p class="flex-1 text-xl">Ecrans connectés</p>
+          <span class="flex-1 text-sm text-gray-300">
+            Créé par l'équipe 2021: Thomas Cardon, Baraka Ahmed, Alexandre
+            Arniaud, Manaud Calixte, Bénigne Demetz, Mohamed Labidi.
+          </span>
+        </div>
       </a>
     </div>
   </footer>

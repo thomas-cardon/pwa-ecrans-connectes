@@ -5,8 +5,8 @@
   }];
 </script>
 
-<div class="bg-kindblue-dark rounded-3xl w-4/5 flex flex-col self-start space-y-4">
-  <h2 class="text-gold tracking-tight text-xl md:text-4xl ml-10 mt-5">Alertes</h2>
+<div class="bg-kindblue-dark rounded-xl sm:rounded-3xl w-full sm:w-4/5 flex flex-col self-start space-y-4">
+  <h2 class="text-gold tracking-tight text-3xl md:text-4xl ml-6 sm:ml-10 mt-5">Alertes</h2>
   <ul>
     {#each alerts as alert}
       <li class="">
@@ -17,7 +17,7 @@
           href={alert.link | "#"}
         >
           <h3 class="text-white">{alert.title}</h3>
-          <p class="text-gray-300"> {alert.content}</p>
+          <p class="text-sm text-gray-300"> {alert.content}</p>
         </a>
       </li>
     {/each}
