@@ -1,23 +1,23 @@
 {
   "private": true,
   "type": "module",
-"scripts": {
-  "dev:only": "svelte-kit dev --host 0.0.0.0",
-  "build:only": "svelte-kit build",
-  "preview": "svelte-kit preview",
-  "tailwind:watch": "cross-env TAILWIND_MODE=watch cross-env NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/tailwind-output.css -w",
-  "tailwind:build": "cross-env TAILWIND_MODE=build cross-env NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/tailwind-output.css",
-  "dev": "concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\"",
-  "build": "yarn run tailwind:build && yarn run build:only"
-},
-"devDependencies": {
+  "scripts": {
+    "dev:only": "svelte-kit dev --host 0.0.0.0",
+    "build:only": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "tailwind:watch": "cross-env TAILWIND_MODE=watch cross-env NODE_ENV=development postcss src/styles/tailwind.css -o src/styles/tailwind-output.css -w",
+    "tailwind:build": "cross-env TAILWIND_MODE=build cross-env NODE_ENV=production postcss src/styles/tailwind.css -o src/styles/tailwind-output.css",
+    "dev": "concurrently \"yarn run dev:only\" \"yarn run tailwind:watch\"",
+    "build": "yarn run tailwind:build && yarn run build:only"
+  },
+  "devDependencies": {
     "@sveltejs/adapter-vercel": "next",
     "@sveltejs/kit": "next",
     "autoprefixer": "^10.4.0",
     "concurrently": "^6.4.0",
     "cross-env": "^7.0.3",
     "postcss-cli": "^9.0.2",
-    "svelte": "^3.38.3",
+    "svelte": "^3.44.2",
     "tailwindcss": "^2.2.19"
   },
   "dependencies": {

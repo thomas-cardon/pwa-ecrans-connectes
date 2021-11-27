@@ -23,6 +23,7 @@ import '../styles/tailwind-output.css';
     >
       <a
         class="flex title-font font-medium items-center md:justify-between justify-center text-white"
+        href="/"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
