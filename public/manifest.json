@@ -1,23 +1,33 @@
 {
-  "name": "Grapefruit",
-  "short_name": "Grapefruit",
-  "description": "Leaving a sour taste in your mouth since 1989",
+  "name": "Dpt. Info",
+  "short_name": "Dpt. Info",
+  "description": "Accédez à votre emploi du temps en un clin d'oeil",
   "icons": [
-    {
-      "src": "/images/icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "/images/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+     },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "/?source=pwa",
-  "background_color": "#457ef7",
+  "background_color": "#1f2022",
   "orientation": "portrait",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#457ef7"
+  "theme_color": "#1f2022"
 }

@@ -1,5 +1,3 @@
-@import url('https://rsms.me/inter/inter.css');
-
 @tailwind base;
 @tailwind components;
 
@@ -38,14 +36,16 @@
     background-color var(--transition), border-color var(--transition);
 }
 
-.light {
-  --accent: #616bc7;
-  --text: #282828;
-  --label: #6a6b6e;
-  --surface: #efefef;
-  --divider: #eaeaea;
-  --base: #fefefe;
-  --overflow: #fff;
+@media (prefers-color-scheme: light) {
+    body {
+      --accent: #616bc7;
+      --text: #282828;
+      --label: #6a6b6e;
+      --surface: #efefef;
+      --divider: #eaeaea;
+      --base: #fefefe;
+      --overflow: #fff;
+    }
 }
 
 *,
@@ -73,6 +73,7 @@ body {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+  user-select: none;
 }
 
 h1,

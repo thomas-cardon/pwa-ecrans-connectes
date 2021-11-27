@@ -1,18 +1,15 @@
 import Link from 'next/link'
-import UnnecessarilyComplexTitle from './unnecessarily-complex-title'
+import Title from './title'
 import Avatar from './avatar'
-import ThemeButton from './theme-button'
 
 const Header = () => {
   return (
     <header>
-      <UnnecessarilyComplexTitle />
+      <Title />
 
       <div style={{ flex: 1 }} />
 
       <nav>
-        <ThemeButton />
-
         <div className='divider' />
 
         <Link href='/profile'>

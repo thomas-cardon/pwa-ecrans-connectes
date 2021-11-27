@@ -1,11 +1,36 @@
 module.exports = {
   purge: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "vibrate-1": "vibrate-1 0.3s linear  infinite both"
+      },
+      keyframes: {
+        "vibrate-1": {
+          "0%,to": {
+            transform: "translate(0)"
+          },
+          "20%": {
+            transform: "translate(-2px, 2px)"
+          },
+          "40%": {
+            transform: "translate(-2px, -2px)"
+          },
+          "60%": {
+            transform: "translate(2px, 2px)"
+          },
+          "80%": {
+            transform: "translate(2px, -2px)"
+          }
+        }
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {
+      opacity: ['disabled'],
+    }
   },
   plugins: [],
 }

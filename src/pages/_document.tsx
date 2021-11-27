@@ -17,21 +17,6 @@ class MyDocument extends Document {
       <Html lang='fr'>
         <Head />
         <body>
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.isLight = false
-                try {
-                  const isLight = window.localStorage.getItem('light-mode')
-                  if (isLight) {
-                    document.querySelector('html').className = 'light'
-                    window.isLight = true
-                  }
-                } catch (err) {}
-            `,
-            }}
-          />
           <Main />
           <NextScript />
         </body>

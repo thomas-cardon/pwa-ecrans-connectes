@@ -11,7 +11,7 @@ const UnnecessarilyComplexTitle = () => (
   <Link href='/'>
     <a>
       <Image
-        src={profilePic}
+        src={process.env.brand || profilePic}
         alt='IUT'
         placeholder='blur'
         width='54'

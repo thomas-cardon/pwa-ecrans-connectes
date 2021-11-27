@@ -1,14 +1,12 @@
 import Page from '../components/page'
 import Section from '../components/section'
-import FakeList from '../components/fake-list'
 
 const Tasks = () => (
-  <Page title='Tasks'>
+  <Page title='Informations'>
     <Section>
-      <h2>Tasks</h2>
+      <h2 className="text-3xl">Dernières informations</h2>
     </Section>
 
-    <FakeList />
   </Page>
 )
 
