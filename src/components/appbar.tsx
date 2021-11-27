@@ -5,15 +5,9 @@ import Avatar from './avatar'
 import ThemeButton from './theme-button'
 
 const Header = () => {
-  const [loaded, setLoaded] = useState(false)
-
-  useEffect(() => {
-    setLoaded(true)
-  }, [])
-
   return (
     <header>
-      <UnnecessarilyComplexTitle loaded={loaded} />
+      <UnnecessarilyComplexTitle />
 
       <div style={{ flex: 1 }} />
 
