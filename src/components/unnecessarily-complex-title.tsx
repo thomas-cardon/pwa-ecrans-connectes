@@ -2,19 +2,20 @@
 // Please test your PWA on iPhone SE sizes
 
 import Image from 'next/image'
+import Link from 'next/link'
+
 import profilePic from '../../public/images/brand.png'
 
-import Link from 'next/link'
 
 const UnnecessarilyComplexTitle = () => (
   <Link href='/'>
     <a>
       <Image
         src={profilePic}
-        alt="IUT"
-        placeholder="blur"
-        width="54"
-        height="54"
+        alt='IUT'
+        placeholder='blur'
+        width='54'
+        height='54'
       />
 
       <style jsx>{`

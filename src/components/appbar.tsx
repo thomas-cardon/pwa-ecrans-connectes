@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import UnnecessarilyComplexTitle from './unnecessarily-complex-title'
 import Avatar from './avatar'

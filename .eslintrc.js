@@ -28,8 +28,8 @@ module.exports = {
   },
   /// End typescript
   rules: {
-    // Point out prettier errors via eslint
-    'prettier/prettier': 'error',
+    // Point out prettier errors via eslint? Nope
+    'prettier/prettier': 0,
 
     // No harm eh?
     'no-plusplus': 0,

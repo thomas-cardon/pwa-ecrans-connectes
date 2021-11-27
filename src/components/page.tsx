@@ -34,4 +34,8 @@ const Page = ({ title, children }: Props) => (
   </>
 )
 
+Page.defaultProps = {
+  title: '',
+}
+
 export default Page

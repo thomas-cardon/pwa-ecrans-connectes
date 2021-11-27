@@ -10,7 +10,8 @@
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "jsxSingleQuote": true
+    "jsxSingleQuote": true,
+    "useTabs": false
   },
   "dependencies": {
     "autoprefixer": "^10.4.0",

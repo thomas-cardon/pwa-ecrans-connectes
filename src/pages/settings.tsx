@@ -1,12 +1,14 @@
-import Page from '../components/page'
-import Section from '../components/section'
-import { Bell, BellOff } from 'react-feather'
 import { useState } from 'react'
-
 import { isMobileSafari } from 'react-device-detect';
 
+import { Bell, BellOff } from 'react-feather'
+
+import Page from '../components/page'
+import Section from '../components/section'
+
+
 const Settings = () => {
-    const [notifications, setNotifications] = useState(false)
+    const [notifications] = useState(false)
 
     return (
         <Page title='Paramètres'>
@@ -16,8 +18,8 @@ const Settings = () => {
 
                 <Section>
                     <h3>Notifications</h3>
-                    <p className="text-xs text-gray-200">Recevez des notifications de la part de l'IUT en cas d'informations urgentes.</p>
-                    <button disabled={isMobileSafari} onClick={() => setNotifications(!notifications)} className="flex items-center justify-center px-2 py-2 my-3 text-sm bg-blue-600 space-x-3 rounded-lg lg:w-auto focus:outline-none">
+                    <p className="text-xs text-gray-200">Recevez des notifications de la part de l&apos;IUT en cas d&apos;informations urgentes.</p>
+                    <button type="button" disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 text-sm bg-blue-600 space-x-3 rounded-lg lg:w-auto focus:outline-none">
                         {notifications ? <BellOff size={16} /> : <Bell size={16} />}
                         <span>{notifications ? 'Désactiver' : 'Activer'}</span>
                     </button>

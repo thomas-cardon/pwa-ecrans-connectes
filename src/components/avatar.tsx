@@ -6,7 +6,7 @@ type Props = {
   children?: React.ReactNode
 }
 
-export default ({ size = 38, image, children }: Props) => {
+const Avatar = ({ size = 38, image, children }: Props) => {
   const string = children ? children.toString() : ''
   const text = string.split(' ').length > 1 ? getInitials(string) : string[0]
 
@@ -37,3 +37,11 @@ export default ({ size = 38, image, children }: Props) => {
     </div>
   )
 }
+
+Avatar.defaultProps = {
+  size: 38,
+  image: null,
+  children: null
+}
+
+export default Avatar
