@@ -1,6 +1,14 @@
-.DS_Store
+# Generated via NextJS
+.next
+
+# Generated via NodeJS
 node_modules
-/.svelte-kit
-/package
-.vercel_build_output
-.vercel
+
+# Generated via next-pwa package
+**/public/workbox**
+**/public/sw**
+
+# macOS meta stuffs
+.DS_Store
+
+.idea

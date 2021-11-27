@@ -1,28 +1,29 @@
-# SvelteKit
+# Next PWA Template
 
-Example project using SvelteKit with the [SpaceX GraphQL API](https://api.spacex.land/graphql/), deployed to [Vercel](https://vercel.com).
+> I am happy to slim or bulk up the template depending on needs. Does sample data help? Hurt? Let me know!
 
-## Deploy Your Own
+<p align="center">
+  <img width="200" src="public/images/dark.png" alt="dark mode"> <img width="200" src="public/images/light.png" alt="light mode">
+</p>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fvercel%2Ftree%2Fmain%2Fexamples%2Fsveltekit&project-name=sveltekit-vercel&repository-name=sveltekit-vercel&demo-title=SvelteKit%20%2B%20Vercel&demo-description=SvelteKit%20app%20fetching%20data%20from%20the%20SpaceX%20GraphQL%20API.&demo-url=https%3A%2F%2Fsveltekit.examples.vercel.com%2F&demo-image=https%3A%2F%2Fsveltekit.examples.vercel.com%2Ftwitter.png)
+## Features
 
-_Live Example: https://sveltekit.examples.vercel.com_
+- PWA ready
+- Dark mode 🌚
+- Eslint/prettier working with typescript
+- 100% lighthouse scores
 
-## Developing
+<img width="300" src="public/images/lighthouse.png" alt="lighthouse">
 
-Once you've created a project and installed dependencies with `npm install`, start a development server:
+## Known issues
 
-```bash
-npm run dev
+- App icon transparency is made black on iOS homescreen (easy fix is to use a non-circle icon for apple and match their dimensions)
+- Statusbar is unreadable in light mode
+- Yes, the title is ultra hacky and should probably be rewritten
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## pwacompat
 
-## Building
+A quick solution for the below is [pwacompat](https://github.com/GoogleChromeLabs/pwacompat). At the time of writing, 20 splash screen images are needed for apple devices alone (portrait and orientation for all screen sizes).
 
-This uses the [Vercel Adapter](https://github.com/sveltejs/kit/tree/master/packages/adapter-vercel) for SvelteKit.
-
-```bash
-npm run build
-```
+- Needs apple splash screen images and meta tags
+- Web manifest/meta tags could probably be optimised? More icon sizes maybe?
