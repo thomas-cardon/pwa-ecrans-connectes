@@ -3,6 +3,9 @@ module.exports = {
   darkMode: 'media', // or 'media' or 'class'
   theme: {
     extend: {
+      fontSize: {
+        tiny: ".5rem"
+      },
       animation: {
         "vibrate-1": "vibrate-1 0.3s linear  infinite both"
       },

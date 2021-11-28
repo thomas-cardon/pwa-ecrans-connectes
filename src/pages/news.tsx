@@ -1,13 +1,30 @@
+import useSWR from 'swr';
+
+import NewsCard from '../components/news-card'
 import Page from '../components/page'
 import Section from '../components/section'
 
-const Tasks = () => (
-  <Page title='Informations'>
-    <Section>
-      <h2 className="text-3xl">Dernières informations</h2>
-    </Section>
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-  </Page>
-)
+const Tasks = () => {
+  const { data, error } = useSWR(process.env.ecranConnectesAddress + '/v1/information', fetcher)
+
+  return (
+    <Page title='Informations'>
+      <Section>
+        <h2 className="text-3xl -mb-8">Dernières informations</h2>
+      </Section>
+
+      <Section>
+        <div className="space-y-4">
+          {data && data.map((news: any) => (
+            <NewsCard key={news.id} title={news.title} content={news.content} link={news.content_link} type={news.type} />
+          ))}
+        </div>
+      </Section>
+
+    </Page>
+  );
+};
 
 export default Tasks

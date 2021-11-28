@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Calendar, Home, Rss, User, Settings } from 'react-feather'
+import { Calendar, Home, Rss, Settings } from 'react-feather'
 
 const links = [
   {
@@ -17,11 +17,6 @@ const links = [
     title: 'Informations',
     icon: <Rss />,
     href: '/news',
-  },
-  {
-    title: 'Profile',
-    icon: <User />,
-    href: '/profile',
   },
   {
     title: 'Paramètres',

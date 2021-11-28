@@ -8,7 +8,7 @@ import useSWR from 'swr'
 import Page from '../components/page'
 import Section from '../components/section'
 
-const fetcher = url => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Settings = () => {
     const [notifications, setNotifications] = useState(false)
@@ -39,18 +39,30 @@ const Settings = () => {
                     <h3>Emploi du temps sélectionné</h3>
                     <p className="text-sm text-gray-200">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
 
-                    <ul className="flex my-3">
-                        <li className="mr-3">
-                            <a onClick={() => setGroupFilter('year')} className={groupFilter == 'year' ? "inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" : "inline-block border border-white dark:border-transparent dark:bg-gray-800 rounded text-blue-500 py-1 px-3"} href="#">Année</a>
+                    <ul className="flex flex-col sm:flex-row my-1 text-xs sm:text-base">
+                        <li className="flex-1 mx-auto w-3/4">
+                            <a onClick={() => setGroupFilter('year')} className={
+                                (groupFilter === 'year' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
+                                "border sm:rounded-r-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
+                            href="#">Année</a>
                         </li>
-                        <li className="mr-3">
-                            <a onClick={() => setGroupFilter('group')} className={groupFilter == 'group' ? "inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" : "inline-block border border-white dark:border-transparent dark:bg-gray-800 rounded text-blue-500 py-1 px-3"} href="#">Groupe</a>
+                        <li className="flex-1 mx-auto w-3/4">
+                            <a onClick={() => setGroupFilter('group')} className={
+                                (groupFilter === 'group' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
+                                "border sm:rounded-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
+                                href="#">Groupe</a>
                         </li>
-                        <li className="mr-3">
-                            <a onClick={() => setGroupFilter('halfGroup')} className={groupFilter == 'halfGroup' ? "inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" : "inline-block border border-white dark:border-transparent dark:bg-gray-800 rounded text-blue-500 py-1 px-3"} href="#">Demi-groupe</a>
+                        <li className="flex-1 mx-auto w-3/4">
+                            <a onClick={() => setGroupFilter('halfGroup')} className={
+                                (groupFilter === 'halfGroup' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
+                                "border sm:rounded-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
+                                href="#">Demi-groupe</a>
                         </li>
-                        <li className="mr-3">
-                            <a onClick={() => setGroupFilter('teacher')} className={groupFilter == 'teacher' ? "inline-block border border-blue-500 rounded py-1 px-3 bg-blue-500 text-white" : "inline-block border border-white dark:border-transparent dark:bg-gray-800 rounded text-blue-500 py-1 px-3"} href="#">Enseignants</a>
+                        <li className="flex-1 mx-auto w-3/4">
+                            <a onClick={() => setGroupFilter('teacher')} className={
+                                (groupFilter === 'teacher' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
+                                "border sm:rounded-l-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
+                                href="#">Enseignants</a>
                         </li>
                     </ul>
 
