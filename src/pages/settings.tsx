@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { isMobileSafari } from 'react-device-detect';
 
 import { Bell, BellOff } from 'react-feather'
@@ -7,12 +7,13 @@ import useSWR from 'swr'
 
 import Page from '../components/page'
 import Section from '../components/section'
+import Pills from '../components/pills'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Settings = () => {
     const [notifications, setNotifications] = useState(false)
-    const [groupFilter, setGroupFilter] = useState('year')
+    const [groupFilter, setGroupFilter] = useState(true)
 
     const { data, error } = useSWR(process.env.ecranConnectesAddress + '/v1/ade', fetcher)
 
@@ -23,53 +24,34 @@ const Settings = () => {
         <Page title='Paramètres'>
             <Section>
                 <h2 className="text-3xl">Paramètres</h2>
-                <p className="text-sm text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>
+                <p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>
 
                 <Section>
                     <h3>Notifications</h3>
-                    <p className="text-xs text-gray-200">Recevez des notifications de la part de l&apos;IUT en cas d&apos;informations urgentes.</p>
-                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 text-sm bg-blue-600 disabled:opacity-50 disabled:animate-none animate-vibrate-1 space-x-3 rounded-lg lg:w-auto focus:outline-none">
+                    <p className="text-xs dark:text-gray-200">Recevez des notifications de la part de l&apos;IUT en cas d&apos;informations urgentes.</p>
+                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 text-sm bg-blue-400 disabled:opacity-50 disabled:animate-none animate-vibrate-1 space-x-3 rounded-lg lg:w-auto focus:outline-none text-white">
                         {notifications ? <BellOff size={16} /> : <Bell size={16} />}
                         <span>{notifications ? 'Désactiver' : 'Activer'}</span>
                     </button>
-                    {!isMobileSafari && <p className="text-xs text-gray-200">iOS ne permet pas à l'heure actuelle de recevoir les notifications d'un site internet. Veuillez utiliser un autre navigateur; comme Chrome ou Firefox.</p>}
+                    {!isMobileSafari && <p className="text-xs dark:text-gray-200">iOS ne permet pas à l'heure actuelle de recevoir les notifications d'un site internet. Veuillez utiliser un autre navigateur; comme <b>Chrome</b> ou <b>Firefox</b>.</p>}
                 </Section>
 
                 <Section>
                     <h3>Emploi du temps sélectionné</h3>
-                    <p className="text-sm text-gray-200">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
+                    <p className="text-sm dark:text-gray-200 mb-4">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
 
-                    <ul className="flex flex-col sm:flex-row my-1 text-xs sm:text-base">
-                        <li className="flex-1 mx-auto w-3/4">
-                            <a onClick={() => setGroupFilter('year')} className={
-                                (groupFilter === 'year' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
-                                "border sm:rounded-r-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
-                            href="#">Année</a>
-                        </li>
-                        <li className="flex-1 mx-auto w-3/4">
-                            <a onClick={() => setGroupFilter('group')} className={
-                                (groupFilter === 'group' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
-                                "border sm:rounded-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
-                                href="#">Groupe</a>
-                        </li>
-                        <li className="flex-1 mx-auto w-3/4">
-                            <a onClick={() => setGroupFilter('halfGroup')} className={
-                                (groupFilter === 'halfGroup' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
-                                "border sm:rounded-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
-                                href="#">Demi-groupe</a>
-                        </li>
-                        <li className="flex-1 mx-auto w-3/4">
-                            <a onClick={() => setGroupFilter('teacher')} className={
-                                (groupFilter === 'teacher' ? 'border-blue-500 bg-blue-500 text-white' : 'border-white dark:border-transparent dark:bg-gray-800 text-blue-500') +
-                                "border sm:rounded-l-none rounded w-full mx-3 my-1 text-center inline-block py-1 px-3"}
-                                href="#">Enseignants</a>
-                        </li>
-                    </ul>
+                    <Pills currentValue={groupFilter} onValueChange={setGroupFilter} data={[
+                        { value: true, label: 'Tout' },
+                        { value: 'year', label: 'Année' },
+                        { value: 'group', label: 'Groupe' },
+                        { value: 'halfGroup', label: 'Demi-groupe' },
+                        { value: 'teacher', label: 'Enseignant' }
+                    ]} />
 
-                    <div className="relative inline-block w-full text-gray-700">
+                    <div className="relative inline-block w-full text-gray-700 mt-6">
                         {data && (<>
                             <select className="w-full h-10 pl-3 pr-6 text-base dark:text-gray-300 placeholder-gray-600 dark:bg-gray-900 border dark:border-transparent rounded-lg appearance-none focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner">
-                                {data.filter(({ type }) => type == groupFilter)
+                                {data.filter(({ type }) => groupFilter === true || type == groupFilter)
                                      .map(({ id, title }) => <option key={id} value={id}>{title}</option>)}
                             </select>
                             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
