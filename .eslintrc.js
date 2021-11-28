@@ -1,6 +1,9 @@
 // Airbnb eslint + react[-hooks] + prettier + typescript
 // From https://gist.github.com/mvllow/c1eeeafb6868dc523b1bcb78644ec769
 
+const a11yOff = Object.keys(require('eslint-plugin-jsx-a11y').rules)
+  .reduce((acc, rule) => { acc[`jsx-a11y/${rule}`] = 'off'; return acc }, {})
+
 module.exports = {
   env: {
     browser: true,
@@ -30,10 +33,11 @@ module.exports = {
   rules: {
     // Point out prettier errors via eslint? Nope
     'prettier/prettier': 0,
-
+    'no-nested-ternary': 0,
     // No harm eh?
     'no-plusplus': 0,
     'react/jsx-props-no-spreading': 0,
+    ...a11yOff,
 
     // Allow triple slash comments (common in .d.ts files)
     'spaced-comment': ['error', 'always', { markers: ['/'] }],

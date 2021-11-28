@@ -15,10 +15,7 @@ const Settings = () => {
     const [notifications, setNotifications] = useState(false)
     const [groupFilter, setGroupFilter] = useState(true)
 
-    const { data, error } = useSWR(process.env.ecranConnectesAddress + '/v1/ade', fetcher)
-
-    console.log(process.env.ecranConnectesAddress + '/v1/ade')
-    console.log(data)
+    const { data } = useSWR(`${process.env.ecranConnectesAddress}/v1/ade`, fetcher)
 
     return (
         <Page title='Paramètres'>
@@ -33,7 +30,7 @@ const Settings = () => {
                         {notifications ? <BellOff size={16} /> : <Bell size={16} />}
                         <span>{notifications ? 'Désactiver' : 'Activer'}</span>
                     </button>
-                    {!isMobileSafari && <p className="text-xs dark:text-gray-200">iOS ne permet pas à l'heure actuelle de recevoir les notifications d'un site internet. Veuillez utiliser un autre navigateur; comme <b>Chrome</b> ou <b>Firefox</b>.</p>}
+                    {!isMobileSafari && <p className="text-xs dark:text-gray-200">iOS ne permet pas à l&apos;heure actuelle de recevoir les notifications d&apos;un site internet. Veuillez utiliser un autre navigateur; comme <b>Chrome</b> ou <b>Firefox</b>.</p>}
                 </Section>
 
                 <Section>
@@ -51,11 +48,13 @@ const Settings = () => {
                     <div className="relative inline-block w-full text-gray-700 mt-6">
                         {data && (<>
                             <select className="w-full h-10 pl-3 pr-6 text-base dark:text-gray-300 placeholder-gray-600 dark:bg-gray-900 border dark:border-transparent rounded-lg appearance-none focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner">
-                                {data.filter(({ type }) => groupFilter === true || type == groupFilter)
+                                {data.filter(({ type }) => groupFilter === true || type === groupFilter)
                                      .map(({ id, title }) => <option key={id} value={id}>{title}</option>)}
                             </select>
                             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                                <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>
+                                <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" fillRule="evenodd" />
+                                </svg>
                             </div>
                         </>)}
                     </div>

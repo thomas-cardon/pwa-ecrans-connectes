@@ -1,30 +1,7 @@
-/* tslint:disable */
-import { useEffect } from 'react';
-
 import Head from 'next/head'
-import { AppProps } from 'next/app'
 import '../styles/global.css'
 
-const App = ({ Component, pageProps }: AppProps) => {
-  const api = process.env.NOTIFICATIONS_API_KEY;
-
-  useEffect(() => {
-    window.OneSignal = window.OneSignal || [];
-    OneSignal.push(function () {
-      OneSignal.init({
-        appId: api,
-        notifyButton: {
-          enable: true,
-        },
-
-        allowLocalhostAsSecureOrigin: true,
-      });
-    });
-
-    return () => {
-      window.OneSignal = undefined;
-    };
-  }, []); // <-- run this effect once on mount
+const App = ({ Component, pageProps }) => {
 
   return (
     <>
@@ -52,7 +29,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <link rel='icon' type='image/png' href='/favicon.png' />
         <link rel='manifest' href='/manifest.json' />
 
-        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async />
       </Head>
 
       <Component {...pageProps} />
