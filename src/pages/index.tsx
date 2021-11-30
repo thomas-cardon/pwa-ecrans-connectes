@@ -6,11 +6,11 @@ export default () => {
   return (
     <Page title="Accueil">
       <Section>
-        <div className="m-1 pt-4 text-center">
+        <div className="pt-4 m-1 text-center">
           <div className="p-2">
-            <div className="inline-flex items-center bg-white leading-none text-pink-600 rounded-lg p-2 shadow text-yellow text-sm">
-              <span className="inline-flex bg-yellow-400 text-white rounded-full h-6 px-3 justify-center items-center">Info</span>
-              <span className="inline-flex text-xs sm:text-base px-2 break-all">Changez votre année/groupe dans les paramètres si nécessaire.</span>
+            <div className="inline-flex items-center p-2 text-sm leading-none bg-white rounded-lg shadow text-yellow">
+              <span className="inline-flex items-center justify-center h-6 px-3 font-semibold text-white bg-yellow-400 rounded-full text-md sm:text-lg">Info</span>
+              <span className="inline-flex px-2 text-xs text-black break-all sm:text-base">Changez votre année/groupe dans les paramètres si nécessaire.</span>
             </div>
           </div>
         </div>

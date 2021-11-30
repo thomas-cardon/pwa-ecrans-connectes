@@ -15,7 +15,7 @@ const Settings = () => {
     const [notifications, setNotifications] = useState(false)
     const [groupFilter, setGroupFilter] = useState(true)
 
-    const { data } = useSWR(`${process.env.ecranConnectesAddress}/v1/ade`, fetcher)
+    const { data, error } = useSWR(`${process.env.ecranConnectesAddress}/v1/ade`, fetcher)
 
     return (
         <Page title='Paramètres' subtitle={<p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>}>
@@ -23,14 +23,14 @@ const Settings = () => {
                 <Section>
                     <h3 className="text-lg font-semibold">Notifications</h3>
                     <p className="text-xs dark:text-gray-200">Recevez des notifications de la part de l&apos;IUT en cas d&apos;informations urgentes.</p>
-                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 space-x-3 text-sm text-white bg-blue-400 rounded-lg disabled:opacity-50 disabled:animate-none animate-vibrate-1 lg:w-auto focus:outline-none">
+                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 space-x-3 text-sm text-white bg-blue-500 rounded-lg disabled:opacity-50 disabled:animate-none animate-vibrate-1 lg:w-auto focus:outline-none">
                         {notifications ? <BellOff size={16} /> : <Bell size={16} />}
                         <span>{notifications ? 'Désactiver' : 'Activer'}</span>
                     </button>
                     {!isMobileSafari && <p className="text-xs dark:text-gray-200">iOS ne permet pas à l&apos;heure actuelle de recevoir les notifications d&apos;un site internet. Veuillez utiliser un autre navigateur; comme <b>Chrome</b> ou <b>Firefox</b>.</p>}
                 </Section>
 
-                <Section>
+                <Section disabled={error !== null} loading={data === null}>
                     <h3 className="text-lg font-semibold">Emploi du temps sélectionné</h3>
                     <p className="mb-4 text-sm dark:text-gray-200">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
 
