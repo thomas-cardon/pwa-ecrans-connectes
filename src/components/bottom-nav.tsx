@@ -29,7 +29,7 @@ const BottomNav = () => {
   const { pathname } = useRouter()
 
   return (
-    <nav>
+    <nav className="bg-white dark:bg-gray-500">
       <div>
         {links.map((link) => (
           <Link href={link.href} key={link.title}>
@@ -49,14 +49,13 @@ const BottomNav = () => {
           padding-bottom: env(safe-area-inset-bottom);
           width: 100%;
           height: calc(env(safe-area-inset-top) + 72px);
-          background: var(--base);
-          border-top: 1px solid var(--divider);
           display: flex;
           align-items: center;
           justify-content: center;
           position: fixed;
           bottom: 0;
-          transition: var(--transition-colors);
+
+          border-top: 1px solid var(--divider);
         }
 
         nav > div {
@@ -82,6 +81,7 @@ const BottomNav = () => {
           height: 20px;
         }
 
+        .active, 
         nav a:active,
         nav a:focus,
         nav a:hover {

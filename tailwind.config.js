@@ -1,7 +1,32 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      indigo: colors.indigo,
+      red: colors.rose,
+      yellow: colors.amber,
+      blue: colors.sky,
+      green: colors.green,
+      gray: {
+        '50': '#f4f4f4',
+        '100': '#e9e9e9',
+        '200': '#c7c7c8',
+        '300': '#a5a6a7',
+        '400': '#626364',
+        '500': '#1f2022',
+        '600': '#1c1d1f',
+        '700': '#17181a',
+        '800': '#131314',
+        '900': '#0f1011'
+      }
+    },
     fontFamily: {
       'sans': ['Open Sans', 'ui-sans-serif', 'system-ui']
     },

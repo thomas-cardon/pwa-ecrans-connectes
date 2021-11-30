@@ -18,7 +18,7 @@ const Page = ({ title, showButtons, subtitle, children }: Props) => (
 
     <Appbar />
 
-    <main>
+    <main className="dark:bg-gray-500">
       <Title showButtons={showButtons} subtitle={subtitle}>{title}</Title>
       {children}
     </main>
@@ -33,8 +33,6 @@ const Page = ({ title, showButtons, subtitle, children }: Props) => (
         max-width: 40em;
         height: 100%;
         min-height: 100vh;
-        background: var(--base);
-        transition: var(--transition-colors);
       }
     `}</style>
   </>

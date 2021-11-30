@@ -4,7 +4,7 @@ import Avatar from './avatar'
 
 const Header = () => {
   return (
-    <header>
+    <header className="bg-white dark:bg-gray-500">
       <Brand />
 
       <div style={{ flex: 1 }} />
@@ -25,7 +25,6 @@ const Header = () => {
           padding-top: env(safe-area-inset-top);
           width: 100%;
           height: calc(env(safe-area-inset-top) + 72px);
-          background: var(--base);
           border-bottom: 1px solid var(--divider);
           display: flex;
           align-items: center;
