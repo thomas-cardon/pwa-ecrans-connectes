@@ -1,13 +1,16 @@
 import Head from 'next/head'
 import Appbar from './appbar'
 import BottomNav from './bottom-nav'
+import Title from './title'
 
 type Props = {
-  title?: string
+  title?: string,
+  subtitle?: React.ReactNode,
+  showButtons?: boolean,
   children: React.ReactNode
 }
 
-const Page = ({ title, children }: Props) => (
+const Page = ({ title, showButtons, subtitle, children }: Props) => (
   <>
     <Head>
       <title>{title ? `${process.env.title || 'PWA'} | ${title}` : process.env.title || 'PWA'}</title>
@@ -15,7 +18,10 @@ const Page = ({ title, children }: Props) => (
 
     <Appbar />
 
-    <main>{children}</main>
+    <main>
+      <Title showButtons={showButtons} subtitle={subtitle}>{title}</Title>
+      {children}
+    </main>
 
     <BottomNav />
 

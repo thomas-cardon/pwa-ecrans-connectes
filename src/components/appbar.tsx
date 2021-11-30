@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import Title from './title'
+import Brand from './brand'
 import Avatar from './avatar'
 
 const Header = () => {
   return (
     <header>
-      <Title />
+      <Brand />
 
       <div style={{ flex: 1 }} />
 

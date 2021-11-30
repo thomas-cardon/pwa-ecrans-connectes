@@ -18,10 +18,9 @@ const Settings = () => {
     const { data } = useSWR(`${process.env.ecranConnectesAddress}/v1/ade`, fetcher)
 
     return (
-        <Page title='Paramètres'>
+        <Page title='Paramètres' subtitle={<p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>}>
             <Section>
-                <h2 className="text-3xl">Paramètres</h2>
-                <p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>
+                
 
                 <Section>
                     <h3>Notifications</h3>

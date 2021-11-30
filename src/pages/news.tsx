@@ -12,10 +12,6 @@ const Tasks = () => {
   return (
     <Page title='Informations'>
       <Section>
-        <h2 className="text-3xl -mb-8">Dernières informations</h2>
-      </Section>
-
-      <Section>
         <div className="space-y-4">
           {data && data.map((news: any) => (
             <NewsCard key={news.id} title={news.title} content={news.content} link={news.content_link} type={news.type} />

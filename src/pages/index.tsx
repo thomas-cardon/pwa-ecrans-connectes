@@ -4,10 +4,8 @@ import Section from '../components/section'
 export default () => {
 
   return (
-    <Page>
+    <Page title="Accueil">
       <Section>
-        <h2 className="text-3xl">Accueil</h2>
-
         <div className="m-1 pt-4 text-center">
           <div className="p-2">
             <div className="inline-flex items-center bg-white leading-none text-pink-600 rounded-lg p-2 shadow text-yellow text-sm">
