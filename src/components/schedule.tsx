@@ -60,8 +60,8 @@ const Schedule = () => {
     ];
 
     return (<div>
-            <div className="rounded-xl overflow-hidden bg-gradient-to-r from-yellow-50 to-yellow-100 p-10">
-                <p className="not-italic text-3xl text-center text-amber-800">{date.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <div className="rounded-xl overflow-hidden bg-gradient-to-r from-yellow-50 to-yellow-100 sm:p-10 p-6">
+                <p className="not-italic text-xl sm:text-3xl text-center text-amber-800">{date.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
             </div>
             {data.map(course => (
                 <div className="py-6" key={course.deb}>
