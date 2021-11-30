@@ -2,6 +2,9 @@ module.exports = {
   purge: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
   darkMode: 'media', // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      'sans': ['Open Sans', 'ui-sans-serif', 'system-ui']
+    },
     extend: {
       fontSize: {
         tiny: ".5rem"
