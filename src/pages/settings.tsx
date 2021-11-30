@@ -20,12 +20,10 @@ const Settings = () => {
     return (
         <Page title='Paramètres' subtitle={<p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>}>
             <Section>
-                
-
                 <Section>
-                    <h3>Notifications</h3>
+                    <h3 className="text-lg font-semibold">Notifications</h3>
                     <p className="text-xs dark:text-gray-200">Recevez des notifications de la part de l&apos;IUT en cas d&apos;informations urgentes.</p>
-                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 text-sm bg-blue-400 disabled:opacity-50 disabled:animate-none animate-vibrate-1 space-x-3 rounded-lg lg:w-auto focus:outline-none text-white">
+                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 space-x-3 text-sm text-white bg-blue-400 rounded-lg disabled:opacity-50 disabled:animate-none animate-vibrate-1 lg:w-auto focus:outline-none">
                         {notifications ? <BellOff size={16} /> : <Bell size={16} />}
                         <span>{notifications ? 'Désactiver' : 'Activer'}</span>
                     </button>
@@ -33,8 +31,8 @@ const Settings = () => {
                 </Section>
 
                 <Section>
-                    <h3>Emploi du temps sélectionné</h3>
-                    <p className="text-sm dark:text-gray-200 mb-4">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
+                    <h3 className="text-lg font-semibold">Emploi du temps sélectionné</h3>
+                    <p className="mb-4 text-sm dark:text-gray-200">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
 
                     <Pills currentValue={groupFilter} onValueChange={setGroupFilter} data={[
                         { value: true, label: 'Tout' },
@@ -44,9 +42,9 @@ const Settings = () => {
                         { value: 'teacher', label: 'Enseignant' }
                     ]} />
 
-                    <div className="relative inline-block w-full text-gray-700 mt-6">
+                    <div className="relative inline-block w-full mt-6 text-gray-700">
                         {data && (<>
-                            <select className="w-full h-10 pl-3 pr-6 text-base dark:text-gray-300 placeholder-gray-600 dark:bg-gray-900 border dark:border-transparent rounded-lg appearance-none focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner">
+                            <select className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none dark:text-gray-300 dark:bg-gray-900 dark:border-transparent focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner">
                                 {data.filter(({ type }) => groupFilter === true || type === groupFilter)
                                      .map(({ id, title }) => <option key={id} value={id}>{title}</option>)}
                             </select>
