@@ -28,6 +28,7 @@ module.exports = {
       }
     },
     fontFamily: {
+      'mono': ['ui-monospace', 'SFMono-Regular', 'monospace'],
       'sans': ['Open Sans', 'ui-sans-serif', 'system-ui']
     },
     extend: {

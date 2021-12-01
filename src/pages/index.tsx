@@ -8,7 +8,7 @@ export default () => {
   return (
     <Page title="Accueil">
       <Section>
-        <Alert category="Info" content="Changez votre année/groupe dans les paramètres si nécessaire." />
+        <Alert category="Info" color="blue" content="Changez votre année/groupe dans les paramètres si nécessaire." />
       </Section>
 
     </Page>

@@ -28,8 +28,11 @@ type CourseProps = {
 }
 
 function process(course: CourseProps) {
+    if (!course.dtstart) return course;
+    
     let obj = {
-        label: course.summary,
+        label: course.summary.replace(/[M|R](.*?) /, ''),
+        module: new RegExp(/([M|R].*?) /, "g").exec(course.summary)?.[1],
         description: course.description,
         location: course.location,
         start: new Date(course.dtstart.replace(/(....)(..)(.....)(..)(.*)/, '$1-$2-$3:$4:$5')),
@@ -49,7 +52,7 @@ const Schedule = ({ data } : Props) => {
 
     let dataSortedByDate = {};
     data.forEach(course => {
-        let date = course.start.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        let date = course.start.toLocaleDateString(navigator.language, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         if (!dataSortedByDate[date]) {
             dataSortedByDate[date] = [];
         }
@@ -64,7 +67,15 @@ const Schedule = ({ data } : Props) => {
                 {courses.map((course, j) =>
                     <div className="py-6" key={i + '-' + j}>
                         <div className="p-4 shadow-xl sm:p-6 dark:bg-gray-800 rounded-xl">
-                            <h2 className="mt-6 text-3xl font-bold text-gray-800 dark:text-white">{course.label.replace(/\*/g, '')}</h2>
+                            <div className="flex flex-row justify-between align-center">
+                                <div className="flex flex-col">
+                                    <h2 className="text-3xl font-light text-gray-800 dark:text-white">{course.label.replace(/\*/g, '').replace(/TD G.*/g, '')}</h2>
+                                </div>
+
+                                <div className="flex flex-col">
+                                    <h2 className="font-mono text-3xl text-gray-800 dark:text-white">{course.module}</h2>
+                                </div>
+                            </div>
                             <p className="text-gray-500 whitespace-pre-line text-md dark:text-gray-50">{course.description.replace(/\([^()]*\)/g, '').replace(/\([^()]*\)/g, '').replace(/[0-9]{10,}/, '').trim()}</p>
                             <p className="text-gray-500 whitespace-pre-line text-md dark:text-gray-50">
                                 <i>📍 {course.location}</i>
