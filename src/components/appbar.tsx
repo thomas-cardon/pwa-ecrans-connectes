@@ -2,12 +2,19 @@ import Link from 'next/link'
 import Brand from './brand'
 import Avatar from './avatar'
 
+import { useOnlineStatus } from '../utils/online'
+import { Wifi, WifiOff } from 'react-feather'
+
 const Header = () => {
+  const isOnline = useOnlineStatus()
+
   return (
     <header className="bg-white dark:bg-gray-500">
       <Brand />
 
       <div style={{ flex: 1 }} />
+
+      {isOnline ? <Wifi /> : <WifiOff />}
 
       <nav>
         <div className='divider' />

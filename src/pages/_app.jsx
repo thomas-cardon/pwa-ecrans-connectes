@@ -1,10 +1,11 @@
 import Head from 'next/head'
+import { OnlineStatusProvider } from "../utils/online";
 import '../styles/global.css'
 
 const App = ({ Component, pageProps }) => {
 
   return (
-    <>
+    <OnlineStatusProvider>
       <Head>
         <title>{process.env.title}</title>
         <meta charSet='utf-8' />
@@ -33,7 +34,7 @@ const App = ({ Component, pageProps }) => {
       </Head>
 
       <Component {...pageProps} />
-    </>
+    </OnlineStatusProvider>
   )
 }
 
