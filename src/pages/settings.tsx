@@ -16,7 +16,7 @@ const Settings = () => {
     const [groupFilter, setGroupFilter] = useState(true)
 
     const { data, error } = useSWR(`${process.env.ecranConnectesAddress}/v1/ade`, fetcher)
-
+    
     return (
         <Page title='Paramètres' subtitle={<p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>}>
             <Section>
@@ -30,7 +30,7 @@ const Settings = () => {
                     {!isMobileSafari && <p className="text-xs dark:text-gray-200">iOS ne permet pas à l&apos;heure actuelle de recevoir les notifications d&apos;un site internet. Veuillez utiliser un autre navigateur; comme <b>Chrome</b> ou <b>Firefox</b>.</p>}
                 </Section>
 
-                <Section disabled={error !== null} loading={data === null}>
+                <Section disabled={error !== null} loading={!Array.isArray(data)}>
                     <h3 className="text-lg font-semibold">Emploi du temps sélectionné</h3>
                     <p className="mb-4 text-sm dark:text-gray-200">Vous pouvez le changer à tout moment. Il est accessible hors-ligne.</p>
 
