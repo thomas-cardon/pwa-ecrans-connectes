@@ -5,7 +5,7 @@ type Props = {
 }
 
 const Section = ({ children, disabled, loading }: Props) => (
-  <section className={disabled ? "filter blur-sm sm:blur-md pointer-events-none" : "pointer-events-none"}>
+  <section className={loading ? "filter blur-sm sm:blur-md pointer-events-none" : ""}>
     {children}
     <style jsx>{`
       section {
