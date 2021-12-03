@@ -1,6 +1,4 @@
-import Link from 'next/link'
 import Brand from './brand'
-import Avatar from './avatar'
 
 import { useOnlineStatus } from '../utils/online'
 import { Wifi, WifiOff, User, Moon } from 'react-feather'
