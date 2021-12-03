@@ -1,7 +1,12 @@
 {
-  "name": "next-pwa-template",
-  "version": "0.1.0",
+  "name": "pwa-ecrans-connectes",
+  "version": "1.0.0",
   "license": "MIT",
+  "description": "Accédez à votre emploi du temps en ligne",
+  "authors": [{
+    "name": "Thomas Cardon",
+    "email": "thomas.cardon@pm.me"
+  }],
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -14,7 +19,6 @@
     "useTabs": false
   },
   "dependencies": {
-    "@headlessui/react": "^1.4.2",
     "autoprefixer": "^10.4.0",
     "next": "^12.0.4",
     "next-pwa": "^3.1.5",
@@ -23,6 +27,7 @@
     "react-device-detect": "^2.1.2",
     "react-dom": "^17.0.2",
     "react-feather": "^2.0.9",
+    "sharp": "^0.29.3",
     "swr": "^1.0.1",
     "tailwindcss": "^2.2.19"
   },
