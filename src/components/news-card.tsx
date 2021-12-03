@@ -20,10 +20,10 @@ const NewsCard = ({ title, content, link, type }: Props) => {
     }
 
     return (
-        <div className="flex flex-col w-full max-w-md px-4 py-6 font-medium text-white shadow-md bg-gradient-to-r from-blue-500 to-blue-600 dark:shadow-inner rounded-xl">
+        <div className="flex flex-col w-full px-4 py-6 font-medium text-white shadow-md bg-gradient-to-r from-blue-500 to-blue-600 dark:shadow-inner rounded-xl">
             <div className="flex items-center justify-between">
                 <div className="flex flex-col items-start">
-                    <div className="text-lg font-light">{title || 'Actualité sans titre'}</div>
+                    <div className="text-xl font-light">{title || 'Actualité sans titre'}</div>
                     <div className="font-sm font-extralight">Source: IUT</div>
                 </div>
                 <div className="flex items-center space-x-4">
