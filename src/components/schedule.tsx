@@ -1,20 +1,3 @@
-import { useLocalStorage } from "../utils/localStorage";
-import { Paperclip } from 'react-feather'
-
-function stringToColor(str = 'xxx') {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    var colour = '#';
-    for (var i = 0; i < 3; i++) {
-        var value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-    }
-    return colour;
-}
-
-
 type Props = {
     data: Array<any>
 }
@@ -27,8 +10,23 @@ type CourseProps = {
     dtend: string
 }
 
-function process(course: CourseProps) {
-    if (!course.dtstart) return course;
+type SavedCourseProps = {
+    summary: string,
+    location: string,
+    description: string,
+    start: string,
+    end: string
+}
+
+function process(course: any) {
+    if (!course.dtstart) {
+        if (course.start)
+            course.start = new Date(course.start);
+        if (course.end)
+            course.end = new Date(course.end);
+
+        return course;
+    }
     
     let obj = {
         label: course.summary.replace(/[M|R](.*?) /, ''),
@@ -43,11 +41,6 @@ function process(course: CourseProps) {
 }
 
 const Schedule = ({ data } : Props) => {
-    const [code, setCode] = useLocalStorage("schedule.adeCode", 8402);
-    const [schedule, setSchedule] = useLocalStorage("schedule.data", []);
-
-    let date = new Date();
-
     Object.keys(data).forEach(key => data[key] = process(data[key]));
 
     let dataSortedByDate = {};
@@ -69,7 +62,7 @@ const Schedule = ({ data } : Props) => {
                         <div className="p-4 shadow-xl sm:p-6 dark:bg-gray-800 rounded-xl">
                             <div className="flex flex-row justify-between align-center">
                                 <div className="flex flex-col">
-                                    <h2 className="text-3xl font-light text-gray-800 dark:text-white">{course.label.replace(/\*/g, '').replace(/TD G.*/g, '')}</h2>
+                                    <h2 className="text-3xl font-light text-gray-800 dark:text-white">{course.label.replace(/\*/g, '').replace('(INFO)', '').replace(/TD G.*/g, '').trim()}</h2>
                                 </div>
 
                                 <div className="flex flex-col">
