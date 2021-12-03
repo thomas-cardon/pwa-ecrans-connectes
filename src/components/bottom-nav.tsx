@@ -36,7 +36,7 @@ const BottomNav = () => {
             <a
               title={link.title}
               aria-label={link.title}
-              className={pathname === link.href ? 'active' : ''}
+              className={pathname === link.href ? 'active transition-all' : 'transition-all'}
             >
               {link.icon}
             </a>
@@ -86,6 +86,15 @@ const BottomNav = () => {
         nav a:focus,
         nav a:hover {
           background: rgba(255, 255, 255, 0.05);
+        }
+
+        @media (prefers-color-scheme: light) {
+          .active,
+          nav a:active,
+          nav a:focus,
+          nav a:hover {
+            background: rgba(0, 0, 0, 0.05);
+          }
         }
 
         nav a.active {
