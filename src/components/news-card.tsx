@@ -20,12 +20,11 @@ const NewsCard = ({ title, content, link, type }: Props) => {
     }
 
     return (
-    <section>
-            <div className="flex flex-col w-full max-w-md p-4 text-white bg-gray-200 bg-indigo-200 shadow-lg dark:bg-gray-800 rounded-xl">
+        <div className="flex flex-col w-full max-w-md px-4 py-6 font-medium text-white shadow-md bg-gradient-to-r from-blue-500 to-blue-600 dark:shadow-inner rounded-xl">
             <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-4">
-                    <div className="w-4 h-4 border border-purple-500 rounded-full" />
-                    <div className="font-bold text-md">{title || 'Actualité sans titre'}</div>
+                <div className="flex flex-col items-start">
+                    <div className="text-lg font-light">{title || 'Actualité sans titre'}</div>
+                    <div className="font-sm font-extralight">Source: IUT</div>
                 </div>
                 <div className="flex items-center space-x-4">
                     <div onClick={handleShare} role="button" className="text-gray-500 cursor-pointer">
@@ -35,12 +34,12 @@ const NewsCard = ({ title, content, link, type }: Props) => {
                     </div>
                 </div>
             </div>
-            <div onClick={() => router.push(link)} role="button" className="mt-4 text-sm font-bold text-gray-500 cursor-pointer dark:text-gray-200">
+            <div onClick={() => router.push(link)} role="button" className="mt-4 text-sm italic text-gray-500 cursor-pointer">
                 {type === "text" ? <p>{content}</p>
-                : <a href={link}>Cliquez ici pour voir les détails</a>}
+                    : <a href={link}>Cliquez ici pour voir les détails</a>}
             </div>
         </div>
-    </section>)
+    )
 }
 
 export default NewsCard
