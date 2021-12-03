@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { isMobileSafari } from 'react-device-detect';
+import { isMobileSafari } from 'react-device-detect'
 
 import { Bell, BellOff } from 'react-feather'
-
 import useSWR from 'swr'
 
 import Page from '../components/page'

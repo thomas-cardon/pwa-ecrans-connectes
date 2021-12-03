@@ -10,7 +10,7 @@ type Props = {
   children: React.ReactNode
 }
 
-const Page = ({ title, showButtons, subtitle, children }: Props) => {  
+const Page = ({ title, showButtons, subtitle, children }: Props) => {
   return (<>
     <Head>
       <title>{title ? `${process.env.title || 'PWA'} | ${title}` : process.env.title || 'PWA'}</title>
