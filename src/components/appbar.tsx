@@ -17,7 +17,7 @@ const Header = () => {
       <nav>
         {isOnline ? <Wifi /> : <WifiOff />}
         <div className='divider' />
-        <Moon />
+        <Moon className="opacity-50" />
         <div className='divider' />
         <User className="opacity-50" />
       </nav>
