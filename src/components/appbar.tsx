@@ -3,7 +3,7 @@ import Brand from './brand'
 import Avatar from './avatar'
 
 import { useOnlineStatus } from '../utils/online'
-import { Wifi, WifiOff, User } from 'react-feather'
+import { Wifi, WifiOff, User, Moon } from 'react-feather'
 
 const Header = () => {
   const isOnline = useOnlineStatus()
@@ -14,9 +14,10 @@ const Header = () => {
 
       <div style={{ flex: 1 }} />
 
-      {isOnline ? <Wifi /> : <WifiOff />}
-
       <nav>
+        {isOnline ? <Wifi /> : <WifiOff />}
+        <div className='divider' />
+        <Moon />
         <div className='divider' />
         <User className="opacity-50" />
       </nav>

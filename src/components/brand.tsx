@@ -3,7 +3,6 @@ import Link from 'next/link'
 
 import profilePic from '../../public/images/brand.png'
 
-
 const Brand = () => (
   <Link href='/'>
     <a>
