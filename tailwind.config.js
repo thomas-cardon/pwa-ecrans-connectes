@@ -32,6 +32,9 @@ module.exports = {
       'sans': ['Open Sans', 'ui-sans-serif', 'system-ui']
     },
     extend: {
+      fontFamily: {
+        'display': ['Quicksand', 'Open Sans', 'ui-sans-serif', 'system-ui']
+      },
       fontSize: {
         tiny: ".5rem"
       },
