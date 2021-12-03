@@ -21,17 +21,18 @@ const SchedulePage = () => {
 
   useEffect(() => {
     if (!data || !data.data || error) return;
+    console.log("Mise à jour de l'emploi du temps :");
+    console.log(new Date());
     setScheduleData(data.data);
     setLastUpdate(new Date());
   }, [data])
 
-  if (error) console.error(error);
   return (
     <Page title='Emploi du temps' showButtons={true}>
       {!isOnline && lastUpdate && <Alert category={<AlertTriangle />} color="yellow" content={"Vous êtes hors-ligne. L'emploi du temps à été mis-à-jour pour la dernière fois le: " + new Date(lastUpdate).toLocaleString('fr-FR', { hour: 'numeric', minute: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />}
       {!isOnline && !lastUpdate && <Alert category={<AlertTriangle />} color="yellow" content="Vous êtes hors-ligne. L'emploi du temps est inaccessible. Reconnectez-vous pour l'avoir à jour." />}
+      {error && lastUpdate && <Alert category={<AlertTriangle />} color="yellow" content={"Impossible de se connecter au serveur des écrans connectés. L'emploi du temps à été mis-à-jour pour la dernière fois le: " + new Date(lastUpdate).toLocaleString('fr-FR', { hour: 'numeric', minute: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />}
       <Section>
-        {error && <pre><code>{error}</code></pre>}
         {scheduleData && <Schedule data={scheduleData} />}
       </Section>
     </Page>
