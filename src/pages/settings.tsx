@@ -8,10 +8,13 @@ import useSWR from 'swr'
 import Page from '../components/page'
 import Section from '../components/section'
 import Pills from '../components/pills'
+import useLocalStorage from '../utils/localStorage';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Settings = () => {
+    const [code, setCode] = useLocalStorage("schedule.adeCode", 8402);
+
     const [notifications, setNotifications] = useState(false)
     const [groupFilter, setGroupFilter] = useState(true)
 
@@ -44,9 +47,9 @@ const Settings = () => {
 
                     <div className="relative inline-block w-full mt-6 text-gray-700">
                         {data && (<>
-                            <select className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none dark:text-gray-300 dark:bg-gray-900 dark:border-transparent focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner">
+                            <select onChange={e => setCode(parseInt(e.target.value))} className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none dark:text-gray-300 dark:bg-gray-900 dark:border-transparent focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner" defaultValue={code}>
                                 {data.filter(({ type }) => groupFilter === true || type === groupFilter)
-                                     .map(({ id, title }) => <option key={id} value={id}>{title}</option>)}
+                                     .map(({ code, title }, i: number) => <option key={i} value={code}>{title}</option>)}
                             </select>
                             <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                                 <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
