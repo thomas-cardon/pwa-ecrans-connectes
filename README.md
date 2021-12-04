@@ -1,29 +1,32 @@
-# Next PWA Template
+# pwa-ecrans-connectes
 
-> I am happy to slim or bulk up the template depending on needs. Does sample data help? Hurt? Let me know!
+Accédez à votre emploi du temps, vos alertes, informations du département depuis votre téléphone (ou ordinateur!).
 
-<p align="center">
-  <img width="200" src="public/images/dark.png" alt="dark mode"> <img width="200" src="public/images/light.png" alt="light mode">
-</p>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/thomas-cardon/pwa-ecrans-connectes)
 
-## Features
 
-- PWA ready
-- Dark mode 🌚
-- Eslint/prettier working with typescript
-- 100% lighthouse scores
+## Avantages
+- Disponible en anglais comme en français
+- Dispose d’un mode hors-ligne
+- Supporte le thème sombre
+- Progressive Web App, donc les ressources ne sont téléchargées qu’une fois, et se mettent a jour seulement si nécessaire
+- Utilise React, donc transposable facilement en application native
+- Conçu de manière à ce que vous puissiez facilement comprendre le code  (avoir des bases de React/Next.js reste recommandé)
 
-<img width="300" src="public/images/lighthouse.png" alt="lighthouse">
+## Comment ça fonctionne ?
+Cette application est juste un “affichage”, elle permet de communiquer avec l’instance WordPress et de restituer ces informations de manière simple et efficace.
 
-## Known issues
+## Installation
+Vous pouvez, soit:
+- Déployer facilement une instance en utilisant Vercel, via le lien ci dessous (vous pouvez même fork ce projet et déployer une instance de votre fork si vous le souhaitez!)
+- Installer l’application en utilisant le gestionnaire de paquets npm ou yarn.
 
-- App icon transparency is made black on iOS homescreen (easy fix is to use a non-circle icon for apple and match their dimensions)
-- Statusbar is unreadable in light mode
-- Yes, the title is ultra hacky and should probably be rewritten
+### En cas d’installation manuelle:
+Vous aurez besoin d’installer la dernière version de Node.js. Vous n’aurez ensuite qu’à initialiser le projet, en utilisant la commande npm install ou yarn install dans le répertoire du projet.
 
-## pwacompat
 
-A quick solution for the below is [pwacompat](https://github.com/GoogleChromeLabs/pwacompat). At the time of writing, 20 splash screen images are needed for apple devices alone (portrait and orientation for all screen sizes).
+## Configurer l’application
+Certaines variables d’environnement sont exposées afin de vous permettre de personnaliser certains aspects de l’app.
 
-- Needs apple splash screen images and meta tags
-- Web manifest/meta tags could probably be optimised? More icon sizes maybe?
+- ecransConnectesAddress: l’adresse web ou IP de l’instance WordPress chargée de télécharger les emplois du temps et fournir les informations
+- brand: un lien vers une image pour remplacer le logo IUT
