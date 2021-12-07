@@ -7,7 +7,7 @@ import Section from '../components/section'
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 const Tasks = () => {
-  const { data } = useSWR(`${process.env.ecranConnectesAddress}/v1/information`, fetcher)
+  const { data } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL}/v1/information`, fetcher)
 
   return (
     <Page title='Informations'>

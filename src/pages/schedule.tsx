@@ -17,7 +17,7 @@ const SchedulePage = () => {
   const [lastUpdate, setLastUpdate] = useLocalStorage("schedule.lastUpdate", null);
   const [scheduleData, setScheduleData] = useLocalStorage("schedule.data", []);
 
-  const { data, error } = useSWR(`${process.env.ecranConnectesAddress}/v1/schedule`, fetcher)
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL}/v1/schedule`, fetcher)
 
   useEffect(() => {
     if (!data || !data.data || error) return;

@@ -13,7 +13,7 @@ type Props = {
 const Page = ({ title, showButtons, subtitle, children }: Props) => {
   return (<>
     <Head>
-      <title>{title ? `${process.env.title || 'PWA'} | ${title}` : process.env.title || 'PWA'}</title>
+      <title>{title ? `${process.env.NEXT_PUBLIC_WEBSITE_TITLE || 'PWA'} | ${title}` : process.env.title || 'PWA'}</title>
     </Head>
 
     <Appbar />

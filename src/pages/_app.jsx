@@ -7,7 +7,7 @@ const App = ({ Component, pageProps }) => {
   return (
     <OnlineStatusProvider>
       <Head>
-        <title>{process.env.title}</title>
+        <title>{process.env.NEXT_PUBLIC_WEBSITE_TITLE}</title>
         <meta charSet='utf-8' />
         <meta name='mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-capable' content='yes' />
