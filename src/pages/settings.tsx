@@ -17,7 +17,7 @@ const Settings = () => {
     const [notifications, setNotifications] = useState(false)
     const [groupFilter, setGroupFilter] = useState(true)
 
-    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL}/v1/ade`, fetcher)
+    const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL || 'https://ptut-2-tv-connectees.alwaysdata.net/wp-json/amu-ecran-connectee'}/v1/ade`, fetcher)
     
     return (
         <Page title='Paramètres' subtitle={<p className="text-sm dark:text-gray-200">Ces paramètres seront enregistrés sur votre appareil.</p>}>
