@@ -1,13 +1,34 @@
 import Brand from './brand'
-
+import { useState, useEffect } from 'react'
 import { useOnlineStatus } from '../utils/online'
-import { Wifi, WifiOff, User, Moon } from 'react-feather'
+import { Wifi, WifiOff, User, Moon, Sun } from 'react-feather'
 
 const Header = () => {
   const isOnline = useOnlineStatus()
+  const [mode, setMode] = useState('light');
+
+
+  const onSelectMode = (mode: string) => {
+    setMode(mode)
+    if (mode === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+  }
+
+  useEffect(() => {
+    // Add listener to update styles
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => onSelectMode(e.matches ? 'dark' : 'light'));
+
+    // Setup dark/light mode for the first time
+    onSelectMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+
+    // Remove listener
+    return () => {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', () => {});
+    }
+  }, []);
 
   return (
-    <header className="bg-white dark:bg-gray-500">
+    <header className="bg-white border-b-2 border-gray-100 dark:border-opacity-25 dark:bg-purple-500">
       <Brand />
 
       <div style={{ flex: 1 }} />
@@ -15,18 +36,13 @@ const Header = () => {
       <nav>
         {isOnline ? <Wifi /> : <WifiOff />}
         <div className='divider' />
-        <Moon className="opacity-50" />
-        <div className='divider' />
-        <User className="opacity-50" />
-      </nav>
-
-      <style jsx>{`
+        {mode === 'dark' ? <Moon className="transition-all cursor-pointer hover:opacity-50" onClick={() => onSelectMode('light')} /> : <Sun className="transition-all cursor-pointer hover:opacity-50" onClick={() => onSelectMode('dark')} />}      </nav>
+      <style jsx global>{`
         header {
           padding: 0 var(--gap);
           padding-top: env(safe-area-inset-top);
           width: 100%;
           height: calc(env(safe-area-inset-top) + 72px);
-          border-bottom: 1px solid var(--divider);
           display: flex;
           align-items: center;
           z-index: 10;

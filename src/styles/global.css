@@ -17,14 +17,6 @@
   --gap-small: 0.75rem;
   --gap: 1.5rem;
   --gap-large: 3rem;
-
-  --divider: #2d2e31;
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-      --divider: #eaeaea;
-  }
 }
 
 *,

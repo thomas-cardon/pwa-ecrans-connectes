@@ -29,14 +29,14 @@ const BottomNav = () => {
   const { pathname } = useRouter()
 
   return (
-    <nav className="bg-white dark:bg-gray-500">
+    <nav className="bg-white border-t-2 border-gray-100 dark:bg-purple-500 dark:border-opacity-25">
       <div>
-        {links.map((link) => (
+        {links.map(link => (
           <Link href={link.href} key={link.title}>
             <a
               title={link.title}
               aria-label={link.title}
-              className={pathname === link.href ? 'active transition-all' : 'transition-all'}
+              className={pathname === link.href ? 'active transition-all dark:text-white' : 'transition-all dark:text-white'}
             >
               {link.icon}
             </a>
@@ -54,8 +54,6 @@ const BottomNav = () => {
           justify-content: center;
           position: fixed;
           bottom: 0;
-
-          border-top: 1px solid var(--divider);
         }
 
         nav > div {
@@ -88,17 +86,11 @@ const BottomNav = () => {
           background: rgba(255, 255, 255, 0.05);
         }
 
-        @media (prefers-color-scheme: light) {
-          .active,
-          nav a:active,
-          nav a:focus,
-          nav a:hover {
-            background: rgba(0, 0, 0, 0.05);
-          }
-        }
-
-        nav a.active {
-          color: var(--accent);
+        body.dark .active,
+        body.dark nav a:active,
+        body.dark nav a:focus,
+        body.dark nav a:hover {
+          background: rgba(0, 0, 0, 0.05);
         }
       `}</style>
     </nav>

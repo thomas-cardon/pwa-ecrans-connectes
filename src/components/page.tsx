@@ -18,7 +18,7 @@ const Page = ({ title, showButtons, subtitle, children }: Props) => {
 
     <Appbar />
 
-    <main className="dark:bg-gray-500">
+    <main className="dark:bg-purple-500">
       <Title showButtons={showButtons} subtitle={subtitle}>{title}</Title>
       {children}
     </main>

@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   purge: ['./src/pages/**/*.tsx', './src/components/**/*.tsx'],
-  darkMode: 'media', // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     colors: {
       transparent: 'transparent',
@@ -25,6 +25,30 @@ module.exports = {
         '700': '#17181a',
         '800': '#131314',
         '900': '#0f1011'
+      },
+      purple: {
+        '50': '#f4f3f6',
+        '100': '#eae6ec',
+        '200': '#cac2d0',
+        '300': '#aa9db4',
+        '400': '#6a537c',
+        '500': '#2a0944',
+        '600': '#26083d',
+        '700': '#200733',
+        '800': '#190529',
+        '900': '#150421'
+      },
+      gold: {
+        '50': '#fefcf9',
+        '100': '#fdf9f4',
+        '200': '#fbefe3',
+        '300': '#f8e6d1',
+        '400': '#f3d3af',
+        '500': '#eec08d',
+        '600': '#d6ad7f',
+        '700': '#b3906a',
+        '800': '#8f7355',
+        '900': '#755e45'
       }
     },
     fontFamily: {

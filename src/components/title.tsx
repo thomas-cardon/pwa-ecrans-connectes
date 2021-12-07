@@ -24,7 +24,7 @@ const Title = ({ showButtons, subtitle, children }) => {
     <Section>
       <div className="lg:flex lg:items-center lg:justify-between">
         <div className="flex-1 min-w-0">
-          <h2 className="text-4xl text-gray-900 leading-12 font-display dark:text-white sm:truncate">
+          <h2 className="text-4xl text-gray-900 leading-12 font-display dark:text-gold-400 dark:font-semibold sm:truncate">
             {children}
           </h2>
           {subtitle}

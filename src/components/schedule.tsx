@@ -59,7 +59,7 @@ const Schedule = ({ data } : Props) => {
                 </div>
                 {courses.map((course, j) =>
                     <div className="py-6" key={i + '-' + j}>
-                        <div className="p-4 shadow-xl sm:p-6 dark:bg-gray-800 rounded-xl">
+                        <div className="p-4 shadow-xl sm:p-6 dark:bg-purple-700 rounded-xl">
                             <div className="flex flex-row justify-between align-center">
                                 <div className="flex flex-col">
                                     <h2 className="text-3xl font-light text-gray-800 dark:text-white">{course.label.replace(/\*/g, '').replace('(INFO)', '').replace(/TD G.*/g, '').trim()}</h2>
@@ -76,14 +76,14 @@ const Schedule = ({ data } : Props) => {
 
                             <div className="flex flex-col items-center justify-center">
 
-                                <div className="relative w-full h-32 p-4 mt-4 bg-center bg-cover rounded-lg shadow-xl bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-gray-300 dark:to-gray-400">
+                                <div className="relative w-full h-32 p-4 mt-4 bg-center bg-cover rounded-lg shadow-xl bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-gold-200 dark:to-gold-300">
                                     <div className="absolute inset-0 bg-opacity-50 rounded-lg backdrop-filter backdrop-blur-md"></div>
                                     <div className="relative flex items-center justify-center w-full h-full px-4 sm:px-6 lg:px-4">
                                         <div>
-                                            <h3 className="text-lg text-center text-gray-700 dark:text-white">
+                                            <h3 className="text-lg text-center text-gray-700">
                                                 Ce cours est de:
                                             </h3>
-                                            <h3 className="mt-2 text-3xl font-bold text-center text-gray-700 dark:text-white">
+                                            <h3 className="mt-2 text-3xl font-bold text-center text-gray-700">
                                                 {course.start.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })} à {course.end.toLocaleTimeString(navigator.language, { hour: '2-digit', minute: '2-digit' })}
                                             </h3>
                                         </div>
