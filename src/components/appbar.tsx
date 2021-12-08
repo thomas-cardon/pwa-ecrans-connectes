@@ -2,11 +2,11 @@ import Brand from './brand'
 import { useState, useEffect } from 'react'
 import { useOnlineStatus } from '../utils/online'
 import { Wifi, WifiOff, User, Moon, Sun } from 'react-feather'
+import useLocalStorage from '../utils/localStorage'
 
 const Header = () => {
   const isOnline = useOnlineStatus()
-  const [mode, setMode] = useState('light');
-
+  const [mode, setMode] = useLocalStorage('dark-mode', 'autodetect');
 
   const onSelectMode = (mode: string) => {
     setMode(mode)
@@ -19,7 +19,8 @@ const Header = () => {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => onSelectMode(e.matches ? 'dark' : 'light'));
 
     // Setup dark/light mode for the first time
-    onSelectMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    if (mode === 'autodetect')
+      onSelectMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
 
     // Remove listener
     return () => {
