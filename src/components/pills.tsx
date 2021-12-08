@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Pills = ({ currentValue, onValueChange, data }: Props) => {
-    return <div className="flex flex-col bg-opacity-50 sm:space-x-2 sm:p-2 sm:flex-row dark:bg-gray-700 bg-gray-50 rounded-xl" role="tablist" aria-orientation="horizontal">
+    return <div className="flex flex-col bg-opacity-50 sm:space-x-2 sm:p-2 sm:flex-row dark:bg-purple-700 bg-gray-50 rounded-xl" role="tablist" aria-orientation="horizontal">
         {data.map(({ value, label }, i) => {
             if (value === currentValue)
                 return (

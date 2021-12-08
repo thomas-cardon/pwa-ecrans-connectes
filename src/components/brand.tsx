@@ -5,7 +5,7 @@ import profilePic from '../../public/images/brand.png'
 
 const Brand = () => (
   <Link href='/'>
-    <a className="d-block">
+    <a className="h-full py-2">
       <Image
         src={process.env.brand || profilePic}
         alt='IUT'

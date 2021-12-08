@@ -7,7 +7,10 @@ import useSWR from 'swr'
 import Page from '../components/page'
 import Section from '../components/section'
 import Pills from '../components/pills'
-import useLocalStorage from '../utils/localStorage';
+
+import Button from '../components/input/button'
+
+import useLocalStorage from '../utils/localStorage'
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -31,10 +34,9 @@ const Settings = () => {
                 <Section>
                     <h3 className="text-lg font-semibold">Notifications</h3>
                     <p className="text-xs dark:text-gray-200">Recevez des notifications de la part de l&apos;IUT en cas d&apos;informations urgentes.</p>
-                    <button type="button" onClick={() => setNotifications(!notifications)} disabled={isMobileSafari} className="flex items-center justify-center px-2 py-2 my-3 space-x-3 text-sm text-white bg-blue-500 rounded-lg disabled:opacity-50 disabled:animate-none animate-vibrate-1 lg:w-auto focus:outline-none">
-                        {notifications ? <BellOff size={16} /> : <Bell size={16} />}
+                    <Button icon={notifications ? <BellOff /> : <Bell />} onClick={() => setNotifications(!notifications)}>
                         <span>{notifications ? 'Désactiver' : 'Activer'}</span>
-                    </button>
+                    </Button>
                     {!isMobileSafari && <p className="text-xs dark:text-gray-200">iOS ne permet pas à l&apos;heure actuelle de recevoir les notifications d&apos;un site internet. Veuillez utiliser un autre navigateur; comme <b>Chrome</b> ou <b>Firefox</b>.</p>}
                 </Section>
 
@@ -50,9 +52,9 @@ const Settings = () => {
                         { value: 'teacher', label: 'Enseignant' }
                     ]} />
 
-                    <div className="relative inline-block w-full mt-6 text-gray-700">
+                    <div className="relative inline-block w-full mt-4 text-gray-700">
                         {data && (<>
-                            <select onChange={e => onCodeChange(parseInt(e.target.value))} className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none dark:text-gray-300 dark:bg-gray-900 dark:border-transparent focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner" defaultValue={code}>
+                            <select onChange={e => onCodeChange(parseInt(e.target.value))} className="w-full h-10 pl-3 pr-6 text-base placeholder-gray-600 border rounded-lg appearance-none dark:text-gray-100 dark:bg-purple-700 dark:border-transparent focus:outline-none focus:ring focus:border-blue-300" placeholder="Emploi du temps à sélectionner" defaultValue={code}>
                                 {data.filter(({ type }) => groupFilter === true || type === groupFilter)
                                      .map(({ code, title }, i: number) => <option key={i} value={code}>{title}</option>)}
                             </select>

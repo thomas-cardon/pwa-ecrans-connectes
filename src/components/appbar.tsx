@@ -29,8 +29,6 @@ const Header = () => {
     }
   }, [])
 
-  console.log(mode)
-
   return (
     <header className="bg-white border-b-2 border-gray-100 dark:border-opacity-25 dark:bg-purple-500">
       <Brand />
