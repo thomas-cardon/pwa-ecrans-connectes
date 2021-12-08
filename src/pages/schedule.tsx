@@ -15,10 +15,13 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 const SchedulePage = () => {
   const isOnline = useOnlineStatus()
   const [lastUpdate, setLastUpdate] = useLocalStorage("schedule.lastUpdate", null);
+
+  const [code] = useLocalStorage("schedule.adeCode", 8379);
   const [scheduleData, setScheduleData] = useLocalStorage("schedule.data", []);
+  
   const [showPassedCourses, setPassedCoursesVisibility] = useState(false);
 
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL || 'https://ptut-2-tv-connectees.alwaysdata.net/wp-json/amu-ecran-connectee'}/v1/schedule`, fetcher)
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL || 'https://ptut-2-tv-connectees.alwaysdata.net/wp-json/amu-ecran-connectee'}/v1/schedule/${code}`, fetcher)
 
   useEffect(() => {
     if (!data || !data.data || error) return;
