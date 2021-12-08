@@ -1,7 +1,7 @@
 import Brand from './brand'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useOnlineStatus } from '../utils/online'
-import { Wifi, WifiOff, User, Moon, Sun } from 'react-feather'
+import { Wifi, WifiOff, Moon, Sun } from 'react-feather'
 import useLocalStorage from '../utils/localStorage'
 
 const Header = () => {
@@ -21,12 +21,15 @@ const Header = () => {
     // Setup dark/light mode for the first time
     if (mode === 'autodetect')
       onSelectMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    else onSelectMode(mode)
 
     // Remove listener
     return () => {
-      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', () => {});
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', () => {})
     }
-  }, []);
+  }, [])
+
+  console.log(mode)
 
   return (
     <header className="bg-white border-b-2 border-gray-100 dark:border-opacity-25 dark:bg-purple-500">
