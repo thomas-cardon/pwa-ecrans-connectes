@@ -7,7 +7,7 @@ import Alert from '../components/alert'
 
 import { useOnlineStatus } from '../utils/online';
 import useLocalStorage from '../utils/localStorage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AlertTriangle } from 'react-feather';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -16,6 +16,7 @@ const SchedulePage = () => {
   const isOnline = useOnlineStatus()
   const [lastUpdate, setLastUpdate] = useLocalStorage("schedule.lastUpdate", null);
   const [scheduleData, setScheduleData] = useLocalStorage("schedule.data", []);
+  const [showPassedCourses, setPassedCoursesVisibility] = useState(false);
 
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_ECRANS_CONNECTES_URL || 'https://ptut-2-tv-connectees.alwaysdata.net/wp-json/amu-ecran-connectee'}/v1/schedule`, fetcher)
 
@@ -35,7 +36,7 @@ const SchedulePage = () => {
       {!isOnline && !lastUpdate && <Alert category={<AlertTriangle />} color="yellow" content="Vous êtes hors-ligne. L'emploi du temps est inaccessible. Reconnectez-vous pour l'avoir à jour." />}
       {error && lastUpdate && <Alert category={<AlertTriangle />} color="yellow" content={"Impossible de se connecter au serveur des écrans connectés. L'emploi du temps à été mis-à-jour pour la dernière fois le: " + new Date(lastUpdate).toLocaleString('fr-FR', { hour: 'numeric', minute: 'numeric', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} />}
       <Section>
-        {scheduleData && <Schedule data={scheduleData.sort((a: { start: Date }, b: { start: Date }) => b.start?.getTime() - a.start?.getTime()).reverse()} />}
+        {scheduleData && <Schedule data={scheduleData} />}
       </Section>
     </Page>
   )

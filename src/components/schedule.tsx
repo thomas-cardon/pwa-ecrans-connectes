@@ -35,13 +35,19 @@ function process(course: any) {
         location: course.location,
         start: new Date(course.dtstart.replace(/(....)(..)(.....)(..)(.*)/, '$1-$2-$3:$4:$5')),
         end: new Date(course.dtend.replace(/(....)(..)(.....)(..)(.*)/, '$1-$2-$3:$4:$5')),
+        ongoing: false
     };
+
+    obj.ongoing = obj.start.getTime() < Date.now() && obj.end.getTime() > Date.now();
     
     return obj;
 }
 
 const Schedule = ({ data } : Props) => {
     Object.keys(data).forEach(key => data[key] = process(data[key]));
+    data = data
+            .filter((x: { end: Date }) => x.end?.getTime() > new Date().getTime())
+            .sort((a: { start: Date }, b: { start: Date }) => a.start?.getTime() - b.start?.getTime())
 
     let dataSortedByDate = {};
     data.forEach(course => {
@@ -57,9 +63,9 @@ const Schedule = ({ data } : Props) => {
                 <div className="p-6 overflow-hidden rounded-xl bg-gradient-to-r from-yellow-50 to-yellow-100 sm:p-10">
                     <p className="text-xl not-italic text-center text-yellow-800 sm:text-3xl">{date}</p>
                 </div>
-                {courses.map((course, j) =>
+            {courses.sort((a: { start: Date }, b: { start: Date }) => b.start?.getTime() - a.start?.getTime()).reverse().map((course, j) =>
                     <div className="py-6" key={i + '-' + j}>
-                        <div className="p-4 shadow-xl sm:p-6 dark:bg-purple-700 rounded-xl">
+                    <div className={`p-4 shadow-xl sm:p-6 dark:bg-purple-700 rounded-xl ${course.ongoing ? 'bg-green-200' : ''}`}>
                             <div className="flex flex-row justify-between align-center">
                                 <div className="flex flex-col">
                                     <h2 className="text-3xl font-light text-gray-800 dark:text-white">{course.label.replace(/\*/g, '').replace('(INFO)', '').replace(/TD G.*/g, '').trim()}</h2>
