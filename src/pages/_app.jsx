@@ -22,11 +22,13 @@ const App = ({ Component, pageProps }) => {
           content="Accédez à votre emploi du temps en un clin d'oeil"
         />
         <meta name='theme-color' content='#1f2022' />
+        <meta name="theme-color" content="#290944" media="(prefers-color-scheme: dark)" />
+
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1, user-scalable=0, viewport-fit=cover'
         />
-        <link rel='apple-touch-icon' href='/images/icon-192.png' />
+        <link rel='apple-touch-icon' href='/images/maskable_icon_x192.png' />
         <link rel='icon' type='image/png' href='/favicon.png' />
         <link rel='manifest' href='/manifest.json' />
 
